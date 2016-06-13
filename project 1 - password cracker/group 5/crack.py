@@ -15,10 +15,11 @@ def test_pass(user, crypt_pass, dict_words):
     for word in dict_words:
         crypt_word = crypt.crypt(word, salt)
         if crypt_word.strip() == crypt_pass.strip():
+            #In case the password is found
             queue.put('Password for %s is: %s' % (user, word))
 
             return
-    
+    #In case the password is not found
     queue.put('Password for %s not found' % user)
 
 
